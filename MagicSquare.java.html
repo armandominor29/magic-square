@@ -1,0 +1,194 @@
+<html>
+<head>
+<title>MagicSquare.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(128,128,128); font-style: italic; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,0,128); font-weight: bold; }
+.s3 { color: rgb(0,0,255); }
+.s4 { color: rgb(0,128,0); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MagicSquare.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">/* 
+ @author armandominor on 3/18/17. 
+ Matrix.java set to produce a magic square. 
+ Is only capable for 1x1, 2x2, or 3x3 matrix. 
+ Anything in between will result in a print statement letting user know 
+ the incorrect number of values were entered 
+ */</span><span class="s1"> 
+ 
+</span><span class="s0">/**Imported classes for use in program*/</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">java.util.Scanner; 
+</span><span class="s2">import </span><span class="s1">java.util.*; 
+ 
+</span><span class="s0">/**Matrix class to produce a magic square*/</span><span class="s1"> 
+</span><span class="s2">public class </span><span class="s1">MagicSquare { 
+ 
+    </span><span class="s2">public static void </span><span class="s1">main(String[] args) { 
+ 
+        </span><span class="s0">//Create 3 arrays(@param oneD one dimensional, @param twoD two dimensional,@param threeD three dimensional).</span><span class="s1"> 
+        </span><span class="s2">int </span><span class="s1">[][] oneD = </span><span class="s2">new int</span><span class="s1">[</span><span class="s3">1</span><span class="s1">][</span><span class="s3">1</span><span class="s1">]; 
+        </span><span class="s2">int </span><span class="s1">[][] twoD = </span><span class="s2">new int</span><span class="s1">[</span><span class="s3">2</span><span class="s1">][</span><span class="s3">2</span><span class="s1">]; 
+        </span><span class="s2">int </span><span class="s1">[][] threeD = </span><span class="s2">new int</span><span class="s1">[</span><span class="s3">3</span><span class="s1">][</span><span class="s3">3</span><span class="s1">]; 
+ 
+        </span><span class="s0">// @param count variable used as navigation support for array output</span><span class="s1"> 
+        </span><span class="s2">int </span><span class="s1">count=</span><span class="s3">0</span><span class="s1">; 
+ 
+        </span><span class="s0">//Take in user input</span><span class="s1"> 
+        Scanner in = </span><span class="s2">new </span><span class="s1">Scanner(System.in); 
+        Scanner c = </span><span class="s2">new </span><span class="s1">Scanner(System.in); 
+ 
+        </span><span class="s0">/**Create a list of integers called matrix to store user input*/</span><span class="s1"> 
+        List&lt;Integer&gt; matrix = </span><span class="s2">new </span><span class="s1">ArrayList&lt;Integer&gt;(); 
+ 
+        </span><span class="s0">/**Do while statement holds true*/</span><span class="s1"> 
+        </span><span class="s2">do </span><span class="s1">{ 
+            </span><span class="s0">//Print instructions for user</span><span class="s1"> 
+            System.out.println(</span><span class="s4">&quot;Matrix:&quot; </span><span class="s1">+ matrix); 
+            System.out.println(</span><span class="s4">&quot;Would you like to provide a whole number input? y/n&quot;</span><span class="s1">); 
+ 
+            </span><span class="s0">//Conditional statement executes if user inputs y</span><span class="s1"> 
+            </span><span class="s2">if </span><span class="s1">(c.next().equals(</span><span class="s4">&quot;y&quot;</span><span class="s1">)){ 
+                System.out.println(</span><span class="s4">&quot;Provide a whole number to add to the list&quot;</span><span class="s1">); 
+                matrix.add(in.nextInt()); 
+            } 
+            </span><span class="s0">//Conditional statement executes if input is not y</span><span class="s1"> 
+            </span><span class="s2">else </span><span class="s1">{ 
+                </span><span class="s2">break</span><span class="s1">; 
+            } 
+        } </span><span class="s2">while </span><span class="s1">(</span><span class="s2">true</span><span class="s1">); 
+ 
+ 
+        </span><span class="s0">// @param testVal variable used to keep count</span><span class="s1"> 
+        </span><span class="s2">double </span><span class="s1">testVal=Math.sqrt(matrix.size()); 
+ 
+        </span><span class="s0">//Conditional statement executes if matrix is 1 by 1</span><span class="s1"> 
+        </span><span class="s2">if </span><span class="s1">(testVal==</span><span class="s3">1</span><span class="s1">){ 
+            </span><span class="s0">//set values from list to oneD matrix</span><span class="s1"> 
+            </span><span class="s2">for </span><span class="s1">(</span><span class="s2">int </span><span class="s1">i=</span><span class="s3">0</span><span class="s1">; i&lt;testVal; i++){ 
+                </span><span class="s2">for </span><span class="s1">(</span><span class="s2">int </span><span class="s1">j=</span><span class="s3">0</span><span class="s1">; j&lt;testVal; j++){ 
+                    oneD[i][j]=matrix.get(count); 
+                    count++; 
+                } 
+            } 
+ 
+            </span><span class="s0">//Ask user for inputs</span><span class="s1"> 
+            System.out.println(</span><span class="s4">&quot;A matrix will now be created with your inputs:&quot;</span><span class="s1">); 
+            </span><span class="s0">//Print values from list to oneD matrix</span><span class="s1"> 
+            </span><span class="s2">for </span><span class="s1">(</span><span class="s2">int </span><span class="s1">i=</span><span class="s3">0</span><span class="s1">; i&lt;testVal; i++){ 
+                </span><span class="s2">for </span><span class="s1">(</span><span class="s2">int </span><span class="s1">j=</span><span class="s3">0</span><span class="s1">; j&lt;testVal; j++) 
+                    System.out.print(oneD[i][j]+ </span><span class="s4">&quot; &quot;</span><span class="s1">); 
+                System.out.println(); 
+            } 
+        } 
+        </span><span class="s0">//Conditional statement executes if matrix is 2 by 2</span><span class="s1"> 
+        </span><span class="s2">else if</span><span class="s1">(testVal==</span><span class="s3">2</span><span class="s1">){ 
+            </span><span class="s0">//Set values from list to twoD matrix</span><span class="s1"> 
+            </span><span class="s2">for </span><span class="s1">(</span><span class="s2">int </span><span class="s1">i=</span><span class="s3">0</span><span class="s1">; i&lt;testVal; i++){ 
+                </span><span class="s2">for </span><span class="s1">(</span><span class="s2">int </span><span class="s1">j=</span><span class="s3">0</span><span class="s1">; j&lt;testVal; j++){ 
+                    twoD[i][j]=matrix.get(count); 
+                    count++; 
+                } 
+            } 
+ 
+            </span><span class="s0">//Ask user for inputs</span><span class="s1"> 
+            System.out.println(</span><span class="s4">&quot;A matrix will now be created with your inputs:&quot;</span><span class="s1">); 
+            </span><span class="s0">//Print values from list to twoD matrix</span><span class="s1"> 
+            </span><span class="s2">for </span><span class="s1">(</span><span class="s2">int </span><span class="s1">i=</span><span class="s3">0</span><span class="s1">; i&lt;testVal; i++){ 
+                </span><span class="s2">for </span><span class="s1">(</span><span class="s2">int </span><span class="s1">j=</span><span class="s3">0</span><span class="s1">; j&lt;testVal; j++) 
+                    System.out.print(twoD[i][j]+ </span><span class="s4">&quot; &quot;</span><span class="s1">); 
+                System.out.println(); 
+            } 
+        } 
+        </span><span class="s0">//Conditional statement executes if matrix is 3 by 3</span><span class="s1"> 
+        </span><span class="s2">else if</span><span class="s1">(testVal==</span><span class="s3">3</span><span class="s1">){ 
+            </span><span class="s0">//set values from list to threeD matrix</span><span class="s1"> 
+            </span><span class="s2">for </span><span class="s1">(</span><span class="s2">int </span><span class="s1">i=</span><span class="s3">0</span><span class="s1">; i&lt;testVal; i++){ 
+                </span><span class="s2">for </span><span class="s1">(</span><span class="s2">int </span><span class="s1">j=</span><span class="s3">0</span><span class="s1">; j&lt;testVal; j++){ 
+                    threeD[i][j]=matrix.get(count); 
+                    count++; 
+                } 
+            } 
+            </span><span class="s0">//Ask user for inputs</span><span class="s1"> 
+            System.out.println(</span><span class="s4">&quot;A matrix will now be created with your inputs:&quot;</span><span class="s1">); 
+            </span><span class="s0">//Print values from list to threeD matrix</span><span class="s1"> 
+            </span><span class="s2">for </span><span class="s1">(</span><span class="s2">int </span><span class="s1">i=</span><span class="s3">0</span><span class="s1">; i&lt;testVal; i++){ 
+                </span><span class="s2">for </span><span class="s1">(</span><span class="s2">int </span><span class="s1">j=</span><span class="s3">0</span><span class="s1">; j&lt;testVal; j++) 
+                    System.out.print(threeD[i][j]+ </span><span class="s4">&quot; &quot;</span><span class="s1">); 
+                System.out.println(); 
+            } 
+        } 
+        </span><span class="s0">//Statement is output if the user entered the incorrect number of inputs(Not a square root)</span><span class="s1"> 
+        </span><span class="s2">else </span><span class="s1">{ 
+            System.out.println(</span><span class="s4">&quot;Number of inputs does not form a square function&quot;</span><span class="s1">); 
+        } 
+ 
+ 
+        </span><span class="s0">//Conditional statement executes if test value is 1</span><span class="s1"> 
+        </span><span class="s2">if </span><span class="s1">(testVal==</span><span class="s3">1</span><span class="s1">){ 
+            System.out.println(</span><span class="s4">&quot;Magic Square: true&quot;</span><span class="s1">); 
+        } 
+        </span><span class="s0">//Conditional statement executes if test value is 2</span><span class="s1"> 
+        </span><span class="s2">else if </span><span class="s1">(testVal==</span><span class="s3">2</span><span class="s1">){ 
+            System.out.println(</span><span class="s4">&quot;Magic Square: false&quot;</span><span class="s1">); 
+ 
+            </span><span class="s0">//Conditional statement executes if there exist repeated values</span><span class="s1"> 
+            </span><span class="s2">if</span><span class="s1">(matrix.get(</span><span class="s3">0</span><span class="s1">).equals(matrix.get(</span><span class="s3">1</span><span class="s1">))||matrix.get(</span><span class="s3">1</span><span class="s1">).equals(matrix.get(</span><span class="s3">2</span><span class="s1">))|| 
+                    matrix.get(</span><span class="s3">2</span><span class="s1">).equals(matrix.get(</span><span class="s3">3</span><span class="s1">))){ 
+                System.out.println(</span><span class="s4">&quot;You entered the same value twice!&quot;</span><span class="s1">); 
+            } 
+        } 
+        </span><span class="s0">//Conditional statement executes if test value is 3</span><span class="s1"> 
+        </span><span class="s2">else if </span><span class="s1">(testVal==</span><span class="s3">3</span><span class="s1">){ 
+            </span><span class="s2">int </span><span class="s1">row1=matrix.get(</span><span class="s3">0</span><span class="s1">)+matrix.get(</span><span class="s3">1</span><span class="s1">)+matrix.get(</span><span class="s3">2</span><span class="s1">); 
+            </span><span class="s2">int </span><span class="s1">row2=matrix.get(</span><span class="s3">3</span><span class="s1">)+matrix.get(</span><span class="s3">4</span><span class="s1">)+matrix.get(</span><span class="s3">5</span><span class="s1">); 
+            </span><span class="s2">int </span><span class="s1">row3=matrix.get(</span><span class="s3">6</span><span class="s1">)+matrix.get(</span><span class="s3">7</span><span class="s1">)+matrix.get(</span><span class="s3">8</span><span class="s1">); 
+            </span><span class="s2">int </span><span class="s1">col1=matrix.get(</span><span class="s3">0</span><span class="s1">)+matrix.get(</span><span class="s3">3</span><span class="s1">)+matrix.get(</span><span class="s3">6</span><span class="s1">); 
+            </span><span class="s2">int </span><span class="s1">col2=matrix.get(</span><span class="s3">1</span><span class="s1">)+matrix.get(</span><span class="s3">4</span><span class="s1">)+matrix.get(</span><span class="s3">7</span><span class="s1">); 
+            </span><span class="s2">int </span><span class="s1">col3=matrix.get(</span><span class="s3">2</span><span class="s1">)+matrix.get(</span><span class="s3">5</span><span class="s1">)+matrix.get(</span><span class="s3">8</span><span class="s1">); 
+            </span><span class="s2">int </span><span class="s1">diag1=matrix.get(</span><span class="s3">0</span><span class="s1">)+matrix.get(</span><span class="s3">4</span><span class="s1">)+matrix.get(</span><span class="s3">8</span><span class="s1">); 
+            </span><span class="s2">int </span><span class="s1">diag2=matrix.get(</span><span class="s3">2</span><span class="s1">)+matrix.get(</span><span class="s3">4</span><span class="s1">)+matrix.get(</span><span class="s3">6</span><span class="s1">); 
+ 
+            </span><span class="s0">//Conditional statement executes if inputs create a magic square</span><span class="s1"> 
+            </span><span class="s2">if </span><span class="s1">(row1==row2&amp;&amp;row2==row3&amp;&amp;col1==col2&amp;&amp;col2==col3&amp;&amp;diag1==diag2){ 
+                System.out.println(</span><span class="s4">&quot;Magic Square: true&quot;</span><span class="s1">); 
+ 
+                </span><span class="s0">//Conditional statement executes if there exist repeated values</span><span class="s1"> 
+                </span><span class="s2">if</span><span class="s1">(matrix.get(</span><span class="s3">0</span><span class="s1">).equals(matrix.get(</span><span class="s3">1</span><span class="s1">))||matrix.get(</span><span class="s3">1</span><span class="s1">).equals(matrix.get(</span><span class="s3">2</span><span class="s1">))|| 
+                        matrix.get(</span><span class="s3">2</span><span class="s1">).equals(matrix.get(</span><span class="s3">3</span><span class="s1">))||matrix.get(</span><span class="s3">3</span><span class="s1">).equals(matrix.get(</span><span class="s3">4</span><span class="s1">)) 
+                        ||matrix.get(</span><span class="s3">4</span><span class="s1">).equals(matrix.get(</span><span class="s3">5</span><span class="s1">))|| 
+                        matrix.get(</span><span class="s3">5</span><span class="s1">).equals(matrix.get(</span><span class="s3">6</span><span class="s1">))|| 
+                        matrix.get(</span><span class="s3">6</span><span class="s1">).equals(matrix.get(</span><span class="s3">7</span><span class="s1">))|| 
+                        matrix.get(</span><span class="s3">7</span><span class="s1">).equals(matrix.get(</span><span class="s3">8</span><span class="s1">))){ 
+                    System.out.println(</span><span class="s4">&quot;You entered the same value twice!&quot;</span><span class="s1">); 
+                } 
+            } 
+            </span><span class="s0">//Conditional statement executes if inputs DO NOT create a magic square</span><span class="s1"> 
+            </span><span class="s2">else </span><span class="s1">{ 
+                System.out.println(</span><span class="s4">&quot;Magic Square: false&quot;</span><span class="s1">); 
+ 
+                </span><span class="s0">//Conditional statement executes if there exist repeated values</span><span class="s1"> 
+                </span><span class="s2">if</span><span class="s1">(matrix.get(</span><span class="s3">0</span><span class="s1">).equals(matrix.get(</span><span class="s3">1</span><span class="s1">))||matrix.get(</span><span class="s3">1</span><span class="s1">).equals(matrix.get(</span><span class="s3">2</span><span class="s1">))|| 
+                        matrix.get(</span><span class="s3">2</span><span class="s1">).equals(matrix.get(</span><span class="s3">3</span><span class="s1">))||matrix.get(</span><span class="s3">3</span><span class="s1">).equals(matrix.get(</span><span class="s3">4</span><span class="s1">)) 
+                        ||matrix.get(</span><span class="s3">4</span><span class="s1">).equals(matrix.get(</span><span class="s3">5</span><span class="s1">))|| 
+                        matrix.get(</span><span class="s3">5</span><span class="s1">).equals(matrix.get(</span><span class="s3">6</span><span class="s1">))|| 
+                        matrix.get(</span><span class="s3">6</span><span class="s1">).equals(matrix.get(</span><span class="s3">7</span><span class="s1">))|| 
+                        matrix.get(</span><span class="s3">7</span><span class="s1">).equals(matrix.get(</span><span class="s3">8</span><span class="s1">))){ 
+                    System.out.println(</span><span class="s4">&quot;You entered the same value twice!&quot;</span><span class="s1">); 
+                } 
+            } 
+        } 
+    } 
+} 
+</span></pre>
+</body>
+</html>
